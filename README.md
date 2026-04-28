@@ -1,10 +1,11 @@
 # Arturia MiniLab 3 Mixxx Mapping (EN/RU)
 
 This folder contains a custom 2-deck Mixxx mapping for **Arturia MiniLab 3**.
+This mapping is intended to be used with MiniLab 3 in **DAW mode**.
 
 Files:
 - `MINILAB3techno.midi.xml` - main MIDI mapping preset
-- `MiniLab3-scripts.js` - script functions for library encoder and loop move logic
+- `MiniLab3-scripts.js` - script logic (library encoder, loop move, pad LED behavior)
 
 ---
 
@@ -20,13 +21,24 @@ Files:
 - Library encoder with:
   - single click: `GoToItem` (select/load action)
   - double click: `MoveFocusForward` (focus switch between sidebar and track list)
+- Pad LED logic via **SysEx (MiniLab 3 DAW mode)**:
+  - Pads `1-4` represent Deck 1, pads `5-8` represent Deck 2
+  - Pastel color themes per deck
+  - VU meter animation per deck
+  - Downbeat accent (bar start pulse)
+  - Loop runner animation when loop is active on a deck
+  - Auto-off for a deck group when no track is loaded or track is near end
+- OLED display output:
+  - live deck status (`play/pause`, `BPM`, `loop`, remaining `%`)
+  - temporary overlay messages when controls are changed (`VOL`, `GAIN`, `EQ`, `RATE`, `PLAY`, `CUE`, `SYNC`, `LOOP`)
 
 ### Install
 1. Copy `MINILAB3techno.midi.xml` and `MiniLab3-scripts.js` to your Mixxx controllers directory.
 2. In Mixxx, open `Preferences -> Controllers`.
-3. Select your **Arturia MiniLab 3** input/output ports.
-4. Load `MINILAB3techno.midi.xml` as the mapping preset.
-5. Make sure scripting is enabled for this preset.
+3. Put MiniLab 3 into **DAW mode**.
+4. Select your **Arturia MiniLab 3** input/output ports.
+5. Load `MINILAB3techno.midi.xml` as the mapping preset.
+6. Make sure scripting is enabled for this preset.
 
 Typical controllers path:
 - Linux: `~/.mixxx/controllers/`
@@ -64,8 +76,8 @@ Deck 2 (notes):
 - `71`: Beatjump forward
 
 Library:
-- `CC 0x72`: encoder rotate (scroll up/down)
-- `CC 0x73`: encoder push (single/double click logic)
+- `CC 0x1C`: encoder rotate (scroll up/down)
+- `CC 0x76`: encoder push (single/double click logic)
 
 Mixer/EQ (selected CC):
 - Deck 1: `rate (0x55)`, `pregain (0x47)`, `volume (0x52)`, `EQ hi/mid/low (0x12/0x5D/0x4A)`
@@ -74,6 +86,17 @@ Mixer/EQ (selected CC):
 ### Notes
 - Loop move and library encoder behavior are implemented in `MiniLab3-scripts.js`.
 - Double-click timeout for the encoder push is set to `300 ms` (`MiniLab3.doubleClickDelay`).
+- This mapping expects MiniLab 3 in **DAW mode**.
+- OLED display output is used for status and temporary control overlays.
+
+### Tuning (LED)
+You can quickly tune pad behavior in `MiniLab3-scripts.js`:
+- `MiniLab3.deck1Color` / `MiniLab3.deck2Color` - base pastel colors for Deck 1/2
+- `MiniLab3.deck1LoopColor` / `MiniLab3.deck2LoopColor` - colors while loop is active
+- `MiniLab3.deckPulseDimFactor` - base dim level (`0.25..0.50` typical)
+- `MiniLab3.downbeatAccentMs` - duration of downbeat accent pulse
+- `MiniLab3.bpmFlashMs` - duration of bright phase (used by pulse helpers)
+- `MiniLab3.bpmBlinkEveryBeats` - beat grouping helper (`4` recommended)
 
 ---
 
@@ -89,13 +112,24 @@ Mixer/EQ (selected CC):
 - Энкодер библиотеки:
   - один клик: `GoToItem` (выбор/загрузка)
   - двойной клик: `MoveFocusForward` (переключение фокуса: sidebar <-> список треков)
+- Логика подсветки пэдов через **SysEx (DAW mode MiniLab 3)**:
+  - Пэды `1-4` относятся к Deck 1, пэды `5-8` к Deck 2
+  - Пастельные цвета для каждой деки
+  - Анимация VU-метра по декам
+  - Акцент на первой доле такта
+  - Бегунок при активном лупе на деке
+  - Авто-гашение группы деки, если трек не загружен или почти закончился
+- Вывод на OLED-экран:
+  - live-статус дек (`play/pause`, `BPM`, `loop`, остаток `%`)
+  - временные overlay-сообщения при изменении контролов (`VOL`, `GAIN`, `EQ`, `RATE`, `PLAY`, `CUE`, `SYNC`, `LOOP`)
 
 ### Установка
 1. Скопируйте `MINILAB3techno.midi.xml` и `MiniLab3-scripts.js` в папку контроллеров Mixxx.
 2. В Mixxx откройте `Preferences -> Controllers`.
-3. Выберите вход/выход для **Arturia MiniLab 3**.
-4. Загрузите пресет `MINILAB3techno.midi.xml`.
-5. Убедитесь, что для пресета включены скрипты.
+3. Переведите MiniLab 3 в режим **DAW**.
+4. Выберите вход/выход для **Arturia MiniLab 3**.
+5. Загрузите пресет `MINILAB3techno.midi.xml`.
+6. Убедитесь, что для пресета включены скрипты.
 
 Типичный путь:
 - Linux: `~/.mixxx/controllers/`
@@ -133,8 +167,8 @@ Deck 2 (ноты):
 - `71`: Beatjump forward
 
 Библиотека:
-- `CC 0x72`: вращение энкодера (скролл вверх/вниз)
-- `CC 0x73`: нажатие энкодера (логика одинарного/двойного клика)
+- `CC 0x1C`: вращение энкодера (скролл вверх/вниз)
+- `CC 0x76`: нажатие энкодера (логика одинарного/двойного клика)
 
 Микшер/EQ (часть CC):
 - Deck 1: `rate (0x55)`, `pregain (0x47)`, `volume (0x52)`, `EQ hi/mid/low (0x12/0x5D/0x4A)`
@@ -143,4 +177,14 @@ Deck 2 (ноты):
 ### Примечания
 - Логика сдвига лупа и энкодера библиотеки реализована в `MiniLab3-scripts.js`.
 - Таймаут двойного клика энкодера: `300 мс` (`MiniLab3.doubleClickDelay`).
+- Этот маппинг рассчитан на работу MiniLab 3 в режиме **DAW**.
+- OLED-экран используется для статуса и временных сообщений о действиях с контролами.
 
+### Тюнинг (LED)
+Основные параметры для быстрой подстройки в `MiniLab3-scripts.js`:
+- `MiniLab3.deck1Color` / `MiniLab3.deck2Color` - базовые пастельные цвета Deck 1/2
+- `MiniLab3.deck1LoopColor` / `MiniLab3.deck2LoopColor` - цвета при активном лупе
+- `MiniLab3.deckPulseDimFactor` - базовая приглушенная яркость (обычно `0.25..0.50`)
+- `MiniLab3.downbeatAccentMs` - длительность акцента на первой доле
+- `MiniLab3.bpmFlashMs` - длительность яркой фазы (используется в pulse-логике)
+- `MiniLab3.bpmBlinkEveryBeats` - вспомогательная группировка по битам (рекомендуется `4`)
