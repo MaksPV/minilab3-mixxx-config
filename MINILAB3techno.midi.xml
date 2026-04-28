@@ -1,0 +1,474 @@
+<?xml version='1.0' encoding='utf-8'?>
+<MixxxControllerPreset mixxxVersion="" schemaVersion="1">
+    <info>
+        <name>MINILAB3techno1</name>
+    </info>
+    <controller id="">
+        <scriptfiles>
+            <file filename="MiniLab3-scripts.js" functionprefix="MiniLab3"/>
+        </scriptfiles>
+        <controls>
+            <control>
+                <group>[EqualizerRack1_[Channel2]_Effect1]</group>
+                <key>parameter2</key>
+                <description>MIDI Learned from 344 messages.</description>
+                <status>0xB0</status>
+                <midino>0x10</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>rate</key>
+                <description>MIDI Learned from 94 messages.</description>
+                <status>0xB0</status>
+                <midino>0x11</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel1]_Effect1]</group>
+                <key>parameter1</key>
+                <description>MIDI Learned from 329 messages.</description>
+                <status>0xB0</status>
+                <midino>0x12</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel2]_Effect1]</group>
+                <key>parameter1</key>
+                <description>MIDI Learned from 303 messages.</description>
+                <status>0xB0</status>
+                <midino>0x13</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>hotcue_1_activate</key>
+                <description>Hotcue 1 Ch1 (Note 36)</description>
+                <status>0x99</status>
+                <midino>0x24</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>hotcue_2_activate</key>
+                <description>Hotcue 2 Ch1 (Note 37)</description>
+                <status>0x99</status>
+                <midino>0x25</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>hotcue_3_activate</key>
+                <description>Hotcue 3 Ch1 (Note 38)</description>
+                <status>0x99</status>
+                <midino>0x26</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>hotcue_4_activate</key>
+                <description>Hotcue 4 Ch1 (Note 39)</description>
+                <status>0x99</status>
+                <midino>0x27</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>hotcue_1_activate</key>
+                <description>Hotcue 1 Ch2 (Note 40)</description>
+                <status>0x99</status>
+                <midino>0x28</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>hotcue_2_activate</key>
+                <description>Hotcue 2 Ch2 (Note 41)</description>
+                <status>0x99</status>
+                <midino>0x29</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>hotcue_3_activate</key>
+                <description>Hotcue 3 Ch2 (Note 42)</description>
+                <status>0x99</status>
+                <midino>0x2A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>hotcue_4_activate</key>
+                <description>Hotcue 4 Ch2 (Note 43)</description>
+                <status>0x99</status>
+                <midino>0x2B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MiniLab3.loopMoveCh1</key>
+                <description>Loop move Ch1 (Notes 48/52)</description>
+                <status>0x90</status>
+                <midino>0x30</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>loop_halve</key>
+                <description>Loop size -50% (Note 49)</description>
+                <status>0x90</status>
+                <midino>0x31</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>beatloop_activate</key>
+                <description>Loop toggle Ch1 (Note 50)</description>
+                <status>0x90</status>
+                <midino>0x32</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>loop_double</key>
+                <description>Loop size ×200% (Note 51)</description>
+                <status>0x90</status>
+                <midino>0x33</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>MiniLab3.loopMoveCh1</key>
+                <description>Loop move Ch1 (Notes 48/52)</description>
+                <status>0x90</status>
+                <midino>0x34</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>beatjump_backward</key>
+                <description>Jump left (Note 53)</description>
+                <status>0x90</status>
+                <midino>0x35</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>beatjump_size_halve</key>
+                <description>Halve jump size (Note 54)</description>
+                <status>0x90</status>
+                <midino>0x36</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>sync_enabled</key>
+                <description>Sync Ch1 (Note 55)</description>
+                <status>0x90</status>
+                <midino>0x37</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>play</key>
+                <description>Play Ch1 (Note 56)</description>
+                <status>0x90</status>
+                <midino>0x38</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>cue_default</key>
+                <description>Cue Ch1 (Note 57)</description>
+                <status>0x90</status>
+                <midino>0x39</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>beatjump_size_double</key>
+                <description>Double jump size (Note 58)</description>
+                <status>0x90</status>
+                <midino>0x3A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>beatjump_forward</key>
+                <description>Jump right (Note 59)</description>
+                <status>0x90</status>
+                <midino>0x3B</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MiniLab3.loopMoveCh2</key>
+                <description>Loop move Ch2 (Notes 60/64)</description>
+                <status>0x90</status>
+                <midino>0x3C</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>loop_halve</key>
+                <description>Loop size -50% (Note 61)</description>
+                <status>0x90</status>
+                <midino>0x3D</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>beatloop_activate</key>
+                <description>Loop toggle Ch2 (Note 62)</description>
+                <status>0x90</status>
+                <midino>0x3E</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>loop_double</key>
+                <description>Loop size ×200% (Note 63)</description>
+                <status>0x90</status>
+                <midino>0x3F</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>MiniLab3.loopMoveCh2</key>
+                <description>Loop move Ch2 (Notes 60/64)</description>
+                <status>0x90</status>
+                <midino>0x40</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>beatjump_backward</key>
+                <description>Jump left (Note 65)</description>
+                <status>0x90</status>
+                <midino>0x41</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>beatjump_size_halve</key>
+                <description>Halve jump size (Note 66)</description>
+                <status>0x90</status>
+                <midino>0x42</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>sync_enabled</key>
+                <description>Sync Ch2 (Note 67)</description>
+                <status>0x90</status>
+                <midino>0x43</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>play</key>
+                <description>Play Ch2 (Note 68)</description>
+                <status>0x90</status>
+                <midino>0x44</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>cue_default</key>
+                <description>Cue Ch2 (Note 69)</description>
+                <status>0x90</status>
+                <midino>0x45</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>beatjump_size_double</key>
+                <description>Double jump size (Note 70)</description>
+                <status>0x90</status>
+                <midino>0x46</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>beatjump_forward</key>
+                <description>Jump right (Note 71)</description>
+                <status>0x90</status>
+                <midino>0x47</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>pregain</key>
+                <description>MIDI Learned from 395 messages.</description>
+                <status>0xB0</status>
+                <midino>0x47</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel1]_Effect1]</group>
+                <key>parameter3</key>
+                <description>MIDI Learned from 397 messages.</description>
+                <status>0xB0</status>
+                <midino>0x4A</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>pregain</key>
+                <description>MIDI Learned from 361 messages.</description>
+                <status>0xB0</status>
+                <midino>0x4C</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel2]_Effect1]</group>
+                <key>parameter3</key>
+                <description>MIDI Learned from 300 messages.</description>
+                <status>0xB0</status>
+                <midino>0x4D</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>volume</key>
+                <description>MIDI Learned from 11 messages.</description>
+                <status>0xB0</status>
+                <midino>0x52</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel2]</group>
+                <key>volume</key>
+                <description>MIDI Learned from 11 messages.</description>
+                <status>0xB0</status>
+                <midino>0x53</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Channel1]</group>
+                <key>rate</key>
+                <description>MIDI Learned from 72 messages.</description>
+                <status>0xB0</status>
+                <midino>0x55</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[EqualizerRack1_[Channel1]_Effect1]</group>
+                <key>parameter2</key>
+                <description>MIDI Learned from 316 messages.</description>
+                <status>0xB0</status>
+                <midino>0x5D</midino>
+                <options>
+                    <normal/>
+                </options>
+            </control>
+            <control>
+                <group>[Library]</group>
+                <key>MiniLab3.libraryEncoder</key>
+                <description>Library Encoder</description>
+                <status>0xB0</status>
+                <midino>0x72</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+            <control>
+                <group>[Library]</group>
+                <key>MiniLab3.libraryEncoderPush</key>
+                <description>Library Encoder Push</description>
+                <status>0xB0</status>
+                <midino>0x73</midino>
+                <options>
+                    <script-binding/>
+                </options>
+            </control>
+        </controls>
+        <outputs/>
+    </controller>
+</MixxxControllerPreset>
