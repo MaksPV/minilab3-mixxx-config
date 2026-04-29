@@ -34,8 +34,14 @@ MiniLab3.deck2Accent = false;
 MiniLab3.downbeatAccentMs = 140;
 MiniLab3.displayEnabled = true;
 MiniLab3.displayRefreshMs = 500;
-MiniLab3.displayOverlayUntil = 0;
-MiniLab3.displayOverlayTimer = null;
+MiniLab3.displayOverlayMs = 1300;
+MiniLab3.displayLine1LeftPad = 3;
+MiniLab3.displayRow1Id = 0x01;
+MiniLab3.displayRow2Id = 0x02;
+MiniLab3.deck1OverlayLine = null;
+MiniLab3.deck2OverlayLine = null;
+MiniLab3.deck1OverlayUntil = 0;
+MiniLab3.deck2OverlayUntil = 0;
 
 // 📦 Состояние кнопки
 MiniLab3.btnState = {
@@ -85,10 +91,6 @@ MiniLab3.stopDisplayTimer = function() {
     if (MiniLab3.displayTimer !== null) {
         engine.stopTimer(MiniLab3.displayTimer);
         MiniLab3.displayTimer = null;
-    }
-    if (MiniLab3.displayOverlayTimer !== null) {
-        engine.stopTimer(MiniLab3.displayOverlayTimer);
-        MiniLab3.displayOverlayTimer = null;
     }
 };
 
@@ -357,9 +359,13 @@ MiniLab3.scaleColor = function(color, factor) {
 
 MiniLab3.updateDisplay = function() {
     if (!MiniLab3.displayEnabled) return;
-    if (Date.now() < MiniLab3.displayOverlayUntil) return;
-    var d1 = MiniLab3.getDeckDisplayState("[Channel1]", "D1");
-    var d2 = MiniLab3.getDeckDisplayState("[Channel2]", "D2");
+    var now = Date.now();
+    var d1 = (MiniLab3.deck1OverlayLine !== null && now < MiniLab3.deck1OverlayUntil)
+        ? MiniLab3.deck1OverlayLine
+        : MiniLab3.getDeckDisplayState("[Channel1]", "D1");
+    var d2 = (MiniLab3.deck2OverlayLine !== null && now < MiniLab3.deck2OverlayUntil)
+        ? MiniLab3.deck2OverlayLine
+        : MiniLab3.getDeckDisplayState("[Channel2]", "D2");
     MiniLab3.showDisplayText(d1, d2);
 };
 
@@ -383,22 +389,24 @@ MiniLab3.showRateOverlay = function(deck, rateValue) {
 
 MiniLab3.showDeckOverlay = function(deck, label, valueText) {
     if (!MiniLab3.displayEnabled) return;
-    var d1 = MiniLab3.getDeckDisplayState("[Channel1]", "D1");
-    var d2 = MiniLab3.getDeckDisplayState("[Channel2]", "D2");
+    var now = Date.now();
+    var d1 = (MiniLab3.deck1OverlayLine !== null && now < MiniLab3.deck1OverlayUntil)
+        ? MiniLab3.deck1OverlayLine
+        : MiniLab3.getDeckDisplayState("[Channel1]", "D1");
+    var d2 = (MiniLab3.deck2OverlayLine !== null && now < MiniLab3.deck2OverlayUntil)
+        ? MiniLab3.deck2OverlayLine
+        : MiniLab3.getDeckDisplayState("[Channel2]", "D2");
     var line = "D" + deck + " " + label + " " + valueText;
     if (deck === 1) {
+        MiniLab3.deck1OverlayLine = line;
+        MiniLab3.deck1OverlayUntil = now + MiniLab3.displayOverlayMs;
         d1 = line;
     } else {
+        MiniLab3.deck2OverlayLine = line;
+        MiniLab3.deck2OverlayUntil = now + MiniLab3.displayOverlayMs;
         d2 = line;
     }
     MiniLab3.showDisplayText(d1, d2);
-    MiniLab3.displayOverlayUntil = Date.now() + 1300;
-    if (MiniLab3.displayOverlayTimer !== null) {
-        engine.stopTimer(MiniLab3.displayOverlayTimer);
-    }
-    MiniLab3.displayOverlayTimer = engine.beginTimer(1350, function() {
-        MiniLab3.displayOverlayTimer = null;
-    }, true);
 };
 
 MiniLab3.getDeckDisplayState = function(group, label) {
@@ -439,8 +447,9 @@ MiniLab3.setPadsGroupColor = function(padIds, r, g, b) {
 };
 
 MiniLab3.showDisplayText = function(line1, line2) {
-    var l1 = MiniLab3.asciiBytes((line1 || "").slice(0, 16));
-    var l2 = MiniLab3.asciiBytes((line2 || "").slice(0, 16));
+    var line1Pad = new Array((MiniLab3.displayLine1LeftPad || 0) + 1).join(" ");
+    var l1 = MiniLab3.asciiBytes(line1Pad + (line1 || ""));
+    var l2 = MiniLab3.asciiBytes(line2 || "");
     // Display init sequence (found necessary on some MiniLab 3 setups)
     var initMsg = [
         0xF0, 0x00, 0x20, 0x6B, 0x7F, 0x42,
@@ -452,10 +461,10 @@ MiniLab3.showDisplayText = function(line1, line2) {
     var msgDaw = [
         0xF0, 0x00, 0x20, 0x6B, 0x7F, 0x42,
         0x04, 0x02, 0x60,
-        0x01
+        MiniLab3.displayRow1Id
     ].concat(l1).concat([
         0x00,
-        0x02
+        MiniLab3.displayRow2Id
     ]).concat(l2).concat([
         0x00,
         0xF7
